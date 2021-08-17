@@ -1,17 +1,14 @@
  <template>
-     <div class="container">
- <nav class="navbar navbar-light bg-dark">
-
+    <div class="container">
+    <nav class="navbar navbar-light bg-dark">
         <div class="container-fluid">
-            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#loginModal">LOG IN</button>
+            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#loginModal" @click="showModal">LOG IN</button>
         </div>
     </nav>
-
-
-
-
-
-
+    <Modal 
+        v-show="isModalVisible" 
+        @close="closeModal"
+    />
     <div class="main-banner" id="top">
         <img src="~/assets/images/1.jpg" id="bg-video" alt="">
 
@@ -25,90 +22,37 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="modal fade modal-fullscreen" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="loginModalLabel">Login to STREAMX </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
+    
     <section class="py-5 text-center container">
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <h1 class="fw-light">ALL THE TV YOU LOVE</h1>
                 <p class="lead text-muted">Stream full seasons of exclusive series, current-season episodes, hit movies, Hulu Originals, kids shows, and more.</p>
-
             </div>
         </div>
     </section>
-
-
-
      </div>
  </template>
  
  <script>
+ import Modal from './Modal.vue';
+     
      export default {
-         
+        name:'Hero',
+        data:function(){
+            return{
+                isModalVisible: false
+            }
+        },
+        methods:{
+            showModal(){
+                this.isModalVisible = true;
+            },
+            closeModal(){
+                this.isModalVisible = false
+            }
+        },
+        components:{Modal},
      }
  </script>
  <style scoped>
